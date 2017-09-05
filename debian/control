@@ -1,0 +1,36 @@
+Source: qamqp
+Section: utils
+Priority: optional
+Maintainer: Robert Manner <robert.manner@balabit.com>
+Build-Depends: debhelper (>= 9), qt5-default
+Standards-Version: 3.9.5
+Homepage: https://github.com/mbroadst/qamqp
+
+Package: qamqp-dev
+Architecture: all
+Section: libdevel
+Depends: ${misc:Depends}, libqamqp0 (= ${binary:Version})
+Description: A Qt4/Qt5 implementation of AMQP 0.9.1
+ focusing primarily on RabbitMQ support.
+ .
+ This package contains the headers of the QAMQP library.
+
+Package: libqamqp0
+Architecture: any
+Pre-Depends: ${misc:Pre-Depends}
+Depends: ${misc:Depends}, ${shlibs:Depends}
+Description: A Qt4/Qt5 implementation of AMQP 0.9.1
+ focusing primarily on RabbitMQ support.
+ .
+ This package contains the QAMQP library.
+
+Package: libqamqp0-dbg
+Section: debug
+Priority: extra
+Architecture: any
+Depends: ${misc:Depends}, libqamqp0 (= ${binary:Version})
+Description: A Qt4/Qt5 implementation of AMQP 0.9.1 (debug)
+ focusing primarily on RabbitMQ support.
+ .
+ This package contains the debug symbols for the QAMQP library.
+

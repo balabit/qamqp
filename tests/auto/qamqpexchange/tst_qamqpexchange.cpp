@@ -283,6 +283,11 @@ void tst_QAMQPExchange::testRejectedMessagePublish()
 
     QVERIFY(exchange->waitForConfirms());
 
+    if (deliveryConfirmedSpy.count() == 2)
+      {
+        QSKIP("The AMQP server does not support x-overflow: reject-publish. For rabbitmq, it requires version >=3.7");
+      }
+
     QCOMPARE(deliveryConfirmedSpy.count(), 1);
     QCOMPARE(deliveryConfirmedSpy.first().first().toLongLong(), firstDeliveryTag);
 

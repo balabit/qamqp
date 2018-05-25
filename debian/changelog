@@ -1,5 +1,6 @@
-qamqp (0.5.0) unstable; urgency=low
+qamqp (0.5.0-bb1) unstable; urgency=low
 
   * Initial debianization
+  * Added support for nacked / rejected message publishes
 
  -- Robert Manner <robert.manner@balabit.com>  Mon, 04 Sep 2017 20:44:14 +0800

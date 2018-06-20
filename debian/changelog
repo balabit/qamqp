@@ -1,3 +1,9 @@
+qamqp (0.5.0-bb2) unstable; urgency=low
+
+  * Made auto reconnect work for basic#close errors
+
+ -- Robert Manner <robert.manner@balabit.com>  Wed, 20 Jun 2018 06:55:18 +0000
+
 qamqp (0.5.0-bb1) unstable; urgency=low
 
   * Initial debianization

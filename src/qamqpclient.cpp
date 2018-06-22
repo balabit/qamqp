@@ -240,7 +240,7 @@ void QAmqpClientPrivate::_q_socketError(QAbstractSocket::SocketError error)
 void QAmqpClientPrivate::_q_readyRead()
 {
     Q_Q(QAmqpClient);
-    
+
     while (socket->bytesAvailable() >= QAmqpFrame::HEADER_SIZE) {
         unsigned char headerData[QAmqpFrame::HEADER_SIZE];
         socket->peek((char*)headerData, QAmqpFrame::HEADER_SIZE);
@@ -499,16 +499,13 @@ void QAmqpClientPrivate::close(const QAmqpMethodFrame &frame)
         errorString = qPrintable(text);
         Q_EMIT q->error(error);
 
-        // if it was a force disconnect, simulate receiving a closeOk
-        if (checkError == QAMQP::ConnectionForcedError) {
-          closeConnection();
-          if (autoReconnect) {
-            qAmqpDebug() << "trying to reconnect after: " << timeout << "ms";
-            QTimer::singleShot(timeout, q, SLOT(_q_connect()));
-          }
-
-          return;
+        closeConnection();
+        if (autoReconnect) {
+          qAmqpDebug() << "trying to reconnect after: " << timeout << "ms";
+          QTimer::singleShot(timeout, q, SLOT(_q_connect()));
         }
+
+        return;
     }
 
     connected = false;

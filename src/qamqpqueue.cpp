@@ -243,7 +243,6 @@ void QAmqpQueuePrivate::consumeOk(const QAmqpMethodFrame &frame)
 
 void QAmqpQueuePrivate::deliver(const QAmqpMethodFrame &frame)
 {
-    qAmqpDebug() << Q_FUNC_INFO;
     QByteArray data = frame.arguments();
     QDataStream in(&data, QIODevice::ReadOnly);
     QString consumer = QAmqpFrame::readAmqpField(in, QAmqpMetaType::ShortString).toString();
